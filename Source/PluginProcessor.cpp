@@ -246,7 +246,6 @@ void SoundiumAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     *rightChannelChain.get<ChainPositions::Peak>().coefficients = *peakCoefficients;
     
     auto cutCoefficients = juce::dsp::FilterDesign<float>::designIIRLowpassHighOrderButterworthMethod(chainSettings.lowCutFreq, getSampleRate(), (chainSettings.lowCutSlope +1 ) * 2);
-    
     auto& leftLowCut = leftChannelChain.get<ChainPositions::LowCut>();
     leftLowCut.setBypassed<0>(true);
     leftLowCut.setBypassed<1>(true);
